@@ -1013,6 +1013,29 @@ checkSpecial();
 setInterval(checkSpecial, 3600000);
 
 // ===== UNLOCK GENÉRICO =====
+const SECTIONS_KEY = 'aniversario_secciones';
+
+function saveSections(section) {
+  try {
+    const saved = JSON.parse(localStorage.getItem(SECTIONS_KEY) || '[]');
+    if (!saved.includes(section)) saved.push(section);
+    localStorage.setItem(SECTIONS_KEY, JSON.stringify(saved));
+  } catch(e) {}
+}
+
+function loadSections() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(SECTIONS_KEY) || '[]');
+    saved.forEach(section => {
+      const overlay = document.getElementById('lock-' + section);
+      if (overlay) {
+        overlay.classList.add('hidden');
+        overlay.style.display = 'none';
+      }
+    });
+  } catch(e) {}
+}
+
 function tryUnlock(section) {
   const input = document.getElementById('pw-' + section);
   const errEl = document.getElementById('err-' + section);
@@ -1022,6 +1045,7 @@ function tryUnlock(section) {
     setTimeout(() => overlay.style.display = 'none', 500);
     errEl.style.display = 'none';
     input.value = '';
+    saveSections(section);
   } else {
     input.classList.add('err');
     errEl.style.display = 'block';
@@ -1138,6 +1162,7 @@ document.getElementById('comment-input').addEventListener('keydown', e => {
 // Cargar datos al abrir la página
 loadNotes();
 loadSecrets();
+loadSections();
 
 // ===== MODAL ===== 
 function openModal(src) {
