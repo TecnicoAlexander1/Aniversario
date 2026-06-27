@@ -543,16 +543,33 @@
   }
 
   /* ===== APARTADOS AMARILLOS ===== */
+  /* layout dos columnas: notas | apartados dorados */
+  .notes-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .notes-left { display: flex; flex-direction: column; }
+  .notes-right { display: flex; flex-direction: column; gap: 0; }
+
+  @media (max-width: 640px) {
+    .notes-layout { grid-template-columns: 1fr; }
+  }
+
   .secret-card {
     display: none;
-    background: linear-gradient(135deg, #fffbe6, #fff3b0);
-    border: 2px solid #f0c040;
+    background: linear-gradient(145deg, #fffaed, #fff4c2, #ffeea0);
+    border: 2px solid #e8b830;
     border-radius: 20px;
-    padding: 2.2rem 2.5rem 1.8rem;
-    margin: 1.5rem 0;
+    padding: 2.2rem 1.8rem 1.6rem;
+    margin-bottom: 1.2rem;
     position: relative;
     animation: slideDown .5s ease;
-    box-shadow: 0 6px 28px rgba(240,192,64,.25);
+    box-shadow: 0 8px 32px rgba(232,184,48,.3), inset 0 1px 0 rgba(255,255,255,.6);
   }
 
   .secret-card.visible { display: block; }
@@ -566,27 +583,39 @@
     position: absolute;
     top: -15px; left: 50%;
     transform: translateX(-50%);
-    background: #f0c040;
-    color: #7a5800;
+    background: linear-gradient(135deg, #e8b830, #d4a020);
+    color: #5a3800;
     font-family: 'Playfair Display', serif;
-    font-size: 1rem;
+    font-size: .95rem;
     font-weight: 700;
     border-radius: 30px;
-    padding: .25rem 1.2rem;
-    letter-spacing: .05em;
-    box-shadow: 0 2px 10px rgba(240,192,64,.4);
+    padding: .3rem 1.4rem;
+    letter-spacing: .08em;
+    box-shadow: 0 3px 12px rgba(212,160,32,.45);
     white-space: nowrap;
   }
 
   .secret-card-body {
     font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-size: 1.05rem;
+    font-size: 1rem;
     line-height: 1.8;
-    color: #5a3e00;
+    color: #4a3200;
     text-align: center;
-    padding-top: .4rem;
+    padding-top: .5rem;
   }
+
+  .notes-right-label {
+    font-size: .72rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: #d4a853;
+    text-align: center;
+    margin-bottom: 1rem;
+    display: none;
+  }
+
+  .notes-right-label.visible { display: block; }
 
   .confetti-btn {
     background: linear-gradient(135deg, var(--blue), var(--gold), var(--blue));
@@ -827,16 +856,22 @@
     <div class="section-divider"></div>
     <p style="color:var(--light); font-size:.9rem; font-style:italic;">Escribe lo que quieras dejarme saber 💘</p>
   </div>
-  <div class="comments-box">
-    <textarea class="comment-input-area" id="comment-input" placeholder="Escribe aquí tu nota..."></textarea>
-    <button class="comment-send-btn" onclick="sendComment()">Enviar 💘</button>
-    <!-- Los apartados amarillos aparecen aquí -->
-    <div id="secret-cards-list"></div>
-    <div class="comments-list" id="comments-list">
-      <!-- ✏️ EDITA AQUÍ el mensaje predeterminado -->
-      <div class="comment-bubble default-msg">
-        Hola mi amor, como ves hay apartados en los cuales te piden contraseña, hoy 1 de julio empieza el uso de esta pagina, en el cual tendras que descubrir que poner en cada una de las secciones, sabes que me gusta jugar de esta manera, como ves el contador de arriba son los dias que hemos estado juntos como pareja, como novios. Este sera un complemento de nuestro segundo aniversario, podras dejar tus notas que aunque no las podre ver, podras dejar lo que quieras, como tambien -.-. --- -. - .-. .- ... . --.-- .-    Espero y te entretengas en estos 5 meses que faltan para nuestro mes. Cada mes tendrias que encontrar que poner en cada apartado, te deseo suerte, ya que si no lo descubres en su respectivo mes, no tendras otra alternativa de poderla obtener. Te amo con todo mi corazon y me la pase muy bien estando contigo (Esto esta programado desde antes pero estoy seguro que me la pase bien contigo ahh). 
+  <div class="notes-layout">
+    <!-- columna izquierda: input y notas -->
+    <div class="notes-left">
+      <textarea class="comment-input-area" id="comment-input" placeholder="Escribe aquí tu nota..."></textarea>
+      <button class="comment-send-btn" onclick="sendComment()">Enviar 💘</button>
+      <div class="comments-list" id="comments-list">
+        <!-- ✏️ EDITA AQUÍ el mensaje predeterminado -->
+        <div class="comment-bubble default-msg">
+          Hola mi amor, como ves hay apartados en los cuales te piden contraseña, hoy 1 de julio empieza el uso de esta pagina, en el cual tendras que descubrir que poner en cada una de las secciones, sabes que me gusta jugar de esta manera, como ves el contador de arriba son los dias que hemos estado juntos como pareja, como novios. Este sera un complemento de nuestro segundo aniversario, podras dejar tus notas que aunque no las podre ver, podras dejar lo que quieras, como tambien -.-. --- -. - .-. .- ... . --.-- .-    Espero y te entretengas en estos 5 meses que faltan para nuestro mes. Cada mes tendrias que encontrar que poner en cada apartado, te deseo suerte, ya que si no lo descubres en su respectivo mes, no tendras otra alternativa de poderla obtener. Te amo con todo mi corazon y me la pase muy bien estando contigo (Esto esta programado desde antes pero estoy seguro que me la pase bien contigo ahh). 
+        </div>
       </div>
+    </div>
+    <!-- columna derecha: apartados dorados -->
+    <div class="notes-right">
+      <p class="notes-right-label" id="secrets-label">✨ apartados desbloqueados</p>
+      <div id="secret-cards-list"></div>
     </div>
   </div>
 </section>
@@ -996,7 +1031,8 @@ function tryUnlock(section) {
 
 // ===== NOTAS / COMENTARIOS =====
 const unlockedSecrets = new Set();
-const NOTES_KEY = 'aniversario_notas';
+const NOTES_KEY    = 'aniversario_notas';
+const SECRETS_KEY  = 'aniversario_secrets';
 
 // Cargar notas guardadas al iniciar
 function loadNotes() {
@@ -1005,7 +1041,6 @@ function loadNotes() {
     if (!saved) return;
     const notes = JSON.parse(saved);
     const list = document.getElementById('comments-list');
-    // Las guardamos en orden cronológico, las mostramos newest-first
     notes.forEach(n => {
       const bubble = document.createElement('div');
       bubble.className = 'comment-bubble';
@@ -1019,12 +1054,34 @@ function loadNotes() {
 function saveNotes() {
   try {
     const bubbles = document.querySelectorAll('#comments-list .comment-bubble');
-    // Están en orden newest-first en el DOM, las invertimos para guardar cronológico
     const notes = Array.from(bubbles).reverse().map(b => ({
       text: b.childNodes[0].textContent,
       time: b.querySelector('.comment-time').textContent
     }));
     localStorage.setItem(NOTES_KEY, JSON.stringify(notes));
+  } catch(e) {}
+}
+
+// Cargar apartados desbloqueados al iniciar
+function loadSecrets() {
+  try {
+    const saved = localStorage.getItem(SECRETS_KEY);
+    if (!saved) return;
+    const keys = JSON.parse(saved);
+    keys.forEach(k => {
+      const trigger = SECRET_TRIGGERS.find(t => t.key === k);
+      if (trigger && !unlockedSecrets.has(k)) {
+        unlockedSecrets.add(k);
+        revealSecretCard(trigger, false); // false = sin confetti al cargar
+      }
+    });
+  } catch(e) {}
+}
+
+// Guardar qué apartados están desbloqueados
+function saveSecrets() {
+  try {
+    localStorage.setItem(SECRETS_KEY, JSON.stringify([...unlockedSecrets]));
   } catch(e) {}
 }
 
@@ -1038,7 +1095,8 @@ function sendComment() {
   if (match) {
     if (!unlockedSecrets.has(match.key)) {
       unlockedSecrets.add(match.key);
-      revealSecretCard(match);
+      revealSecretCard(match, true); // true = con confetti
+      saveSecrets();
     }
     input.value = '';
     return;
@@ -1056,7 +1114,7 @@ function sendComment() {
   saveNotes();
 }
 
-function revealSecretCard(trigger) {
+function revealSecretCard(trigger, withConfetti = true) {
   const container = document.getElementById('secret-cards-list');
   const card = document.createElement('div');
   card.className = 'secret-card visible';
@@ -1065,8 +1123,11 @@ function revealSecretCard(trigger) {
     <div class="secret-card-body">${trigger.content}</div>
   `;
   container.appendChild(card);
-  card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  launchConfetti();
+  document.getElementById('secrets-label').classList.add('visible');
+  if (withConfetti) {
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    launchConfetti();
+  }
 }
 
 // Enter para enviar (Shift+Enter = nueva línea)
@@ -1074,8 +1135,9 @@ document.getElementById('comment-input').addEventListener('keydown', e => {
   if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendComment(); }
 });
 
-// Cargar notas al abrir la página
+// Cargar datos al abrir la página
 loadNotes();
+loadSecrets();
 
 // ===== MODAL ===== 
 function openModal(src) {
