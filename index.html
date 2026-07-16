@@ -217,8 +217,8 @@
 
   /* ===== LOCK ===== */
   .locked-overlay {
-    position: absolute;
-    inset: 0;
+    position: relative;
+    min-height: 280px;
     background: rgba(255,255,255,.97);
     backdrop-filter: blur(8px);
     display: flex;
@@ -227,13 +227,13 @@
     justify-content: center;
     z-index: 10;
     transition: opacity .5s;
+    border-radius: 8px;
   }
 
-  .locked-overlay.hidden { opacity:0; pointer-events:none; }
+  .locked-overlay.hidden { opacity:0; pointer-events:none; display:none; }
 
-  /* Secciones bloqueadas: altura compacta uniforme */
-  .section { min-height: 0; }
-  .section-content { padding: 0 0 2rem; }
+  /* Ocultar contenido mientras está bloqueado */
+  .section-content { display: none; }
 
   .lock-icon {
     font-size: 3rem;
@@ -809,7 +809,6 @@
     </div>
     <p class="lock-err" id="err-carta">Contraseña incorrecta 💔</p>
   </div>
-  <div class="section-content" id="content-carta" style="display:none;">
   <div class="section-header">
     <p class="section-eyebrow">para ella</p>
     <h2 class="section-title">Una carta</h2>
@@ -834,7 +833,6 @@
       <div class="carta-firma">Con todo mi amor,<br><strong>Alexander</strong> 😼</div>
     </div>
   </div>
-  </div>
 </section>
 
 <!-- ===== 2. GALERÍA ===== -->
@@ -849,7 +847,6 @@
     </div>
     <p class="lock-err" id="err-galeria">Contraseña incorrecta guapa 💔</p>
   </div>
-  <div class="section-content" id="content-galeria" style="display:none;">
   <div class="section-header">
     <p class="section-eyebrow">momentos</p>
     <h2 class="section-title">Nuestra galería</h2>
@@ -862,7 +859,6 @@
     <div class="gallery-item" onclick="openModal('foto1.jpg')"><img src="foto1.jpg" alt=""></div>
     <div class="gallery-item" onclick="openModal('foto2.jpg')"><img src="foto2.jpg" alt=""></div>
     -->
-  </div>
   </div>
 </section>
 
@@ -878,7 +874,6 @@
     </div>
     <p class="lock-err" id="err-linea">Contraseña incorrecta mi amor 💔</p>
   </div>
-  <div class="section-content" id="content-linea" style="display:none;">
   <div class="section-header">
     <p class="section-eyebrow">nuestra historia</p>
     <h2 class="section-title">Línea de tiempo</h2>
@@ -901,7 +896,6 @@
       </div>
     </div>
   </div>
-  </div>
 </section>
 
 <!-- ===== 4. RAZONES ===== -->
@@ -916,7 +910,6 @@
     </div>
     <p class="lock-err" id="err-razones">Contraseña incorrectaaaa help me please 💔</p>
   </div>
-  <div class="section-content" id="content-razones" style="display:none;">
   <div class="section-header">
     <p class="section-eyebrow">por estas razones</p>
     <h2 class="section-title">Te quiero porque...</h2>
@@ -927,7 +920,6 @@
     <div class="reason-card"><div class="reason-num">01</div><p class="reason-text">Agrega contenido aquí.</p></div>
     <div class="reason-card"><div class="reason-num">02</div><p class="reason-text">Agrega contenido aquí.</p></div>
     <div class="reason-card"><div class="reason-num">03</div><p class="reason-text">Agrega contenido aquí.</p></div>
-  </div>
   </div>
 </section>
 
@@ -943,7 +935,6 @@
     </div>
     <p class="lock-err" id="err-musica">Contraseña super incorrecta cab 💔</p>
   </div>
-  <div class="section-content" id="content-musica" style="display:none;">
   <div class="section-header">
     <p class="section-eyebrow">nuestra melodía</p>
     <h2 class="section-title">Nuestra canción</h2>
@@ -953,7 +944,6 @@
     <div class="music-embed">
       <iframe class="spotify" style="height:380px;" src="https://open.spotify.com/embed/playlist/47iZQwCbEYt58no51Y2Oy7?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
-  </div>
   </div>
 </section>
 
@@ -997,7 +987,6 @@
     </div>
     <p class="lock-err" id="err-special">YA YA YA YA, NIÑA YA, babys de favor💔</p>
   </div>
-  <div class="section-content" id="content-special" style="display:none;">
   <div class="section-header">
     <p class="section-eyebrow">segundo aniversario aniversario</p>
     <h2 class="section-title"> Otro año más </h2>
@@ -1009,7 +998,6 @@
   </div>
   <br>
   <button class="confetti-btn" onclick="launchConfetti()">🎉 ¡Celebrar! 🎉</button>
-  </div>
 </section>
 
 <!-- MODAL -->
@@ -1139,7 +1127,7 @@ function loadSections() {
     const saved = JSON.parse(localStorage.getItem(SECTIONS_KEY) || '[]');
     saved.forEach(section => {
       const overlay = document.getElementById('lock-' + section);
-      if (overlay) { overlay.classList.add('hidden'); overlay.style.display = 'none'; }
+      if (overlay) overlay.classList.add('hidden');
       const content = document.getElementById('content-' + section);
       if (content) content.style.display = 'block';
     });
@@ -1152,7 +1140,6 @@ function tryUnlock(section) {
   if (input.value.trim() === PASSWORDS[section]) {
     const overlay = document.getElementById('lock-' + section);
     overlay.classList.add('hidden');
-    setTimeout(() => overlay.style.display = 'none', 500);
     errEl.style.display = 'none';
     input.value = '';
     const content = document.getElementById('content-' + section);
