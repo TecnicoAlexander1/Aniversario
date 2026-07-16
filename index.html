@@ -231,17 +231,6 @@
 
   .locked-overlay.hidden { opacity:0; pointer-events:none; }
 
-  /* Cuando hay overlay activo, la sección no crece con el contenido oculto */
-  .section:has(.locked-overlay:not(.hidden)) {
-    min-height: 0 !important;
-    padding: 0 !important;
-  }
-
-  .section:has(.locked-overlay:not(.hidden)) .locked-overlay {
-    position: relative;
-    min-height: 280px;
-  }
-
   .lock-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
@@ -816,28 +805,30 @@
     </div>
     <p class="lock-err" id="err-carta">Contraseña incorrecta 💔</p>
   </div>
-  <div class="section-header">
-    <p class="section-eyebrow">para ella</p>
-    <h2 class="section-title">Una carta</h2>
-    <div class="section-divider"></div>
-  </div>
-  <!-- ✏️ EDITA AQUÍ el texto de la carta -->
-  <div class="carta-wrapper">
-    <div class="carta-papel">
-      <p class="carta-intro">La primer contraseña que descubriste mi amor, hablando el apartado, espero y no haya sido tan difícil, ya que para mi seria la mas fácil de todas. Empezemos.</p>
-      <div class="carta-encabezado">
-        <span>Para: Lizeth</span>
-        <span>De: Alexander</span>
+  <div class="section-content" id="content-carta" style="display:none;">
+    <div class="section-header">
+      <p class="section-eyebrow">para ella</p>
+      <h2 class="section-title">Una carta</h2>
+      <div class="section-divider"></div>
+    </div>
+    <!-- ✏️ EDITA AQUÍ el texto de la carta -->
+    <div class="carta-wrapper">
+      <div class="carta-papel">
+        <p class="carta-intro">La primer contraseña que descubriste mi amor, hablando el apartado, espero y no haya sido tan difícil, ya que para mi seria la mas fácil de todas. Empezemos.</p>
+        <div class="carta-encabezado">
+          <span>Para: Lizeth</span>
+          <span>De: Alexander</span>
+        </div>
+        <div class="carta-cuerpo">
+          <p>Mi amor, en el tiempo que hemos estado juntos, he aprendido muchas cosas de mi, como de ti, es increible el amor que te he podido agarrar. Yo no soy una persona que oculte lo que siente, no me averguenza, siento que eso me define completamente, y contigo es evidente. Te demuestro mi amor cada dia, a mi forma podria ser, pero lo demuestro. Empiezo con estas palabras ya que jamas quiero que dudes del amor que te tengo, enserio.</p>
+          <p>Has sido parte de mi etapa de la prepa, la cual de la forma en como paso, no siento que fue en un mal momento, todo lo contrario. Pero aunque en el inicio era callado, siempre fui y soy el mismo de siempre, y me di cuenta que tu tambien. No es para lucirme o escucharme patan, pero si alguien me considera juzgon, siempre sera por lo que opino de una mujer (niñas), y contigo, que aunque no te conocia al 100, tenia mis propios metodos para descubrir cada vez mas de ti.</p>
+          <p>Lo cual me ayudo en varias cosas, pero la principal siempre fue de que en ti no hay falsedad, no finjes para encajar, eres tu misma desde que te conozco hasta ahorita, obvio cambia las actitudes y acciones a base de la confianza, pero en la forma de comportarte, me transmitiste tu ser tan hermoso, que obvio tenias tus errorcitos como cualquier persona, y te ayude a que te des cuenta de que estabas haciendo algo mal, en arreglarlos no, ese trabajo es de uno mismo, pero en cambio sin darme cuenta, esa necesidad de que veas las cosas de otra manera, era porque yo queria que estuvieras conmigo, sin yo darme cuenta.</p>
+          <p>En la forma en que fluyo todo siempre me trae a mi mente el como pude comportarme asi contigo desde un inicio. Claro, por el momento no me he equivocado, ya fue hace mas de dos años que nos conocemos, y sigues siendo la misma, mas loquita si, a veces ridis. Pero siendo tu misma, hasta con esos brillitos en tu carita como el primer dia en que te vi, mentiria si te dijera que no veo un futuro contigo.</p>
+          <p>Ya que en los ultimos meses, se ha reforzado ese pensamiento en mi, no miento cuando digo que contigo lo tengo todo, y quiero seguir mis dias acompañado de tu linda sonrisa, tu linda familia, y en especial tu forma de seguir adelante, y querer superarte a ti misma. Imaginate las tantas cosas bonitas que dije de tu ser, y ni aun describo lo que me pareces fisicamente mi amor, me volveria loco, y supongo que tu tambien con solo imaginarlo, pero bueno, eso sera para otro apartado.</p>
+          <p>Hoy que descubriste la primer contraseña. Inicias ahora si en completar esta pagina, este detalle que quiero tenerte con esa desesperacion de completarla, como la misma forma en la que me desesperas todos los dias ahh.</p>
+        </div>
+        <div class="carta-firma">Con todo mi amor,<br><strong>Alexander</strong> 😼</div>
       </div>
-      <div class="carta-cuerpo">
-        <p>Mi amor, en el tiempo que hemos estado juntos, he aprendido muchas cosas de mi, como de ti, es increible el amor que te he podido agarrar. Yo no soy una persona que oculte lo que siente, no me averguenza, siento que eso me define completamente, y contigo es evidente. Te demuestro mi amor cada dia, a mi forma podria ser, pero lo demuestro. Empiezo con estas palabras ya que jamas quiero que dudes del amor que te tengo, enserio.</p>
-        <p>Has sido parte de mi etapa de la prepa, la cual de la forma en como paso, no siento que fue en un mal momento, todo lo contrario. Pero aunque en el inicio era callado, siempre fui y soy el mismo de siempre, y me di cuenta que tu tambien. No es para lucirme o escucharme patan, pero si alguien me considera juzgon, siempre sera por lo que opino de una mujer (niñas), y contigo, que aunque no te conocia al 100, tenia mis propios metodos para descubrir cada vez mas de ti.</p>
-        <p>Lo cual me ayudo en varias cosas, pero la principal siempre fue de que en ti no hay falsedad, no finjes para encajar, eres tu misma desde que te conozco hasta ahorita, obvio cambia las actitudes y acciones a base de la confianza, pero en la forma de comportarte, me transmitiste tu ser tan hermoso, que obvio tenias tus errorcitos como cualquier persona, y te ayude a que te des cuenta de que estabas haciendo algo mal, en arreglarlos no, ese trabajo es de uno mismo, pero en cambio sin darme cuenta, esa necesidad de que veas las cosas de otra manera, era porque yo queria que estuvieras conmigo, sin yo darme cuenta.</p>
-        <p>En la forma en que fluyo todo siempre me trae a mi mente el como pude comportarme asi contigo desde un inicio. Claro, por el momento no me he equivocado, ya fue hace mas de dos años que nos conocemos, y sigues siendo la misma, mas loquita si, a veces ridis. Pero siendo tu misma, hasta con esos brillitos en tu carita como el primer dia en que te vi, mentiria si te dijera que no veo un futuro contigo.</p>
-        <p>Ya que en los ultimos meses, se ha reforzado ese pensamiento en mi, no miento cuando digo que contigo lo tengo todo, y quiero seguir mis dias acompañado de tu linda sonrisa, tu linda familia, y en especial tu forma de seguir adelante, y querer superarte a ti misma. Imaginate las tantas cosas bonitas que dije de tu ser, y ni aun describo lo que me pareces fisicamente mi amor, me volveria loco, y supongo que tu tambien con solo imaginarlo, pero bueno, eso sera para otro apartado.</p>
-        <p>Hoy que descubriste la primer contraseña. Inicias ahora si en completar esta pagina, este detalle que quiero tenerte con esa desesperacion de completarla, como la misma forma en la que me desesperas todos los dias ahh.</p>
-      </div>
-      <div class="carta-firma">Con todo mi amor,<br><strong>Alexander</strong> 😼</div>
     </div>
   </div>
 </section>
@@ -1138,6 +1129,8 @@ function loadSections() {
         overlay.classList.add('hidden');
         overlay.style.display = 'none';
       }
+      const content = document.getElementById('content-' + section);
+      if (content) content.style.display = 'block';
     });
   } catch(e) {}
 }
@@ -1151,6 +1144,9 @@ function tryUnlock(section) {
     setTimeout(() => overlay.style.display = 'none', 500);
     errEl.style.display = 'none';
     input.value = '';
+    // Mostrar contenido si existe
+    const content = document.getElementById('content-' + section);
+    if (content) content.style.display = 'block';
     saveSections(section);
   } else {
     input.classList.add('err');
