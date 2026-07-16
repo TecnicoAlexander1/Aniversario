@@ -315,6 +315,84 @@
 
   .read-text p { margin-bottom: 1.2rem; }
 
+  /* ===== CARTA ESTILO PAPEL ===== */
+  .carta-wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .carta-papel {
+    background: #fffef9;
+    border: 1px solid rgba(137,180,232,.25);
+    border-radius: 4px;
+    padding: 3rem 3.5rem;
+    box-shadow: 0 4px 32px rgba(137,180,232,.12), 2px 2px 0 #f0f0e8, 4px 4px 0 #e8e8e0;
+    position: relative;
+  }
+
+  .carta-papel::before {
+    content: '';
+    position: absolute;
+    left: 3.2rem;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: rgba(137,180,232,.2);
+  }
+
+  .carta-intro {
+    font-family: 'Nunito', sans-serif;
+    font-size: .9rem;
+    color: #607080;
+    font-style: italic;
+    margin-bottom: 1.8rem;
+    text-align: center;
+  }
+
+  .carta-encabezado {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Nunito', sans-serif;
+    font-size: .9rem;
+    color: #89b4e8;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed rgba(137,180,232,.3);
+    letter-spacing: .03em;
+  }
+
+  .carta-cuerpo p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    line-height: 1.9;
+    color: #1a2535;
+    text-align: justify;
+    text-justify: inter-word;
+    margin-bottom: 1.2rem;
+    text-indent: 1.8em;
+  }
+
+  .carta-firma {
+    margin-top: 2rem;
+    text-align: right;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #607080;
+    line-height: 1.7;
+  }
+
+  .carta-firma strong {
+    font-family: 'Cormorant Garamond', serif;
+    color: #89b4e8;
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 600px) {
+    .carta-papel { padding: 2rem 1.5rem; }
+    .carta-papel::before { left: 1.8rem; }
+  }
+
   .placeholder-msg {
     text-align: center;
     color: rgba(122,96,112,.4);
@@ -732,9 +810,24 @@
     <h2 class="section-title">Una carta</h2>
     <div class="section-divider"></div>
   </div>
-  <!-- ✏️ EDITA AQUÍ el texto de la carta (cada <p> es un párrafo) -->
-  <div class="read-text">
-    <p>La primer contraseña que descubriste mi amor, me da mucho gusto (si es que tu lo descubriste sola). Amor, en estos proximos meses quiero que estes atenta ante todo lo de esta pagina, cada detalle, cada cosa, aunque parezca absurda, quiero que te vuelvas loca por descibrir mas de esta pagina, cada gesto que hago, que aunque parezca improvisado, no sabes si lo he estado planeando o ya lo tengo desde hace mucho tiempo. Te pido paciencia conmigo, como yo la tendre contigo, o mas bien LA QUE SIEMPRE TENGO CONTIGO ahh. te amo mi amor, con todo mi corazon, muchas felicidades. Antes de terminar, esta pagina tengo acceso 24/7, entonces si notas algo raro que cambio en ella, te aseguro que no es un error. Con esto me despido, mucha suerte con los demas apartados, y feliciades por haber descubierto el primero, que posiblemente sea el mas facil de todos. Te amo🙈 </p>
+  <!-- ✏️ EDITA AQUÍ el texto de la carta -->
+  <div class="carta-wrapper">
+    <div class="carta-papel">
+      <p class="carta-intro">La primer contraseña que descubriste mi amor, hablando el apartado, espero y no haya sido tan difícil, ya que para mi seria la mas fácil de todas. Empezemos.</p>
+      <div class="carta-encabezado">
+        <span>Para: Lizeth</span>
+        <span>De: Alexander</span>
+      </div>
+      <div class="carta-cuerpo">
+        <p>Mi amor, en el tiempo que hemos estado juntos, he aprendido muchas cosas de mi, como de ti, es increible el amor que te he podido agarrar. Yo no soy una persona que oculte lo que siente, no me averguenza, siento que eso me define completamente, y contigo es evidente. Te demuestro mi amor cada dia, a mi forma podria ser, pero lo demuestro. Empiezo con estas palabras ya que jamas quiero que dudes del amor que te tengo, enserio.</p>
+        <p>Has sido parte de mi etapa de la prepa, la cual de la forma en como paso, no siento que fue en un mal momento, todo lo contrario. Pero aunque en el inicio era callado, siempre fui y soy el mismo de siempre, y me di cuenta que tu tambien. No es para lucirme o escucharme patan, pero si alguien me considera juzgon, siempre sera por lo que opino de una mujer (niñas), y contigo, que aunque no te conocia al 100, tenia mis propios metodos para descubrir cada vez mas de ti.</p>
+        <p>Lo cual me ayudo en varias cosas, pero la principal siempre fue de que en ti no hay falsedad, no finjes para encajar, eres tu misma desde que te conozco hasta ahorita, obvio cambia las actitudes y acciones a base de la confianza, pero en la forma de comportarte, me transmitiste tu ser tan hermoso, que obvio tenias tus errorcitos como cualquier persona, y te ayude a que te des cuenta de que estabas haciendo algo mal, en arreglarlos no, ese trabajo es de uno mismo, pero en cambio sin darme cuenta, esa necesidad de que veas las cosas de otra manera, era porque yo queria que estuvieras conmigo, sin yo darme cuenta.</p>
+        <p>En la forma en que fluyo todo siempre me trae a mi mente el como pude comportarme asi contigo desde un inicio. Claro, por el momento no me he equivocado, ya fue hace mas de dos años que nos conocemos, y sigues siendo la misma, mas loquita si, a veces ridis. Pero siendo tu misma, hasta con esos brillitos en tu carita como el primer dia en que te vi, mentiria si te dijera que no veo un futuro contigo.</p>
+        <p>Ya que en los ultimos meses, se ha reforzado ese pensamiento en mi, no miento cuando digo que contigo lo tengo todo, y quiero seguir mis dias acompañado de tu linda sonrisa, tu linda familia, y en especial tu forma de seguir adelante, y querer superarte a ti misma. Imaginate las tantas cosas bonitas que dije de tu ser, y ni aun describo lo que me pareces fisicamente mi amor, me volveria loco, y supongo que tu tambien con solo imaginarlo, pero bueno, eso sera para otro apartado.</p>
+        <p>Hoy que descubriste la primer contraseña. Inicias ahora si en completar esta pagina, este detalle que quiero tenerte con esa desesperacion de completarla, como la misma forma en la que me desesperas todos los dias ahh.</p>
+      </div>
+      <div class="carta-firma">Con todo mi amor,<br><strong>Alexander</strong> 😼</div>
+    </div>
   </div>
 </section>
 
@@ -897,7 +990,7 @@
   </div>
   <!-- ✏️ EDITA AQUÍ el mensaje del tercer aniversario -->
   <div class="read-text">
-    <p>Agrega contenido aquí — Feliz segundo aniversario mi amor, en que momento pasaron ya dos años y ya mas tres de conocernos, lo del oxxo lo recuerdo como si fuera ayer ahh, bueno amor, si leiste esto es porque descifraste o yo te dije indirectamente que era el titulo del libro la contraseña, aun te espera varios secretos en esta pagina, disfrutalo que te traigo un buen contenido ahhh JAJAJAJA. Quiero decirte que no me arrepiento de nada contigo, que en estos momentos me quiero ingeniar como poder hacer algo nuevo para este aniversario, espero y no pienses que soy nerd al hacerte una pagina web, respeta. Hoy en nuestro dia, te podria decir miles de palabras que confirmen mi amor hacia ti, la cosa es que serian repititivas, muvhas gracias por estar a mi lado este tiempo, te juro que en ningun momento he dudado en seguir estando contigo, contigo lo tengo absolutamente todo, me complementas al 100 x 100. Cuando termines de leer esto quiero que me mandes este mensaje en via messenger, tu no preguntes por qué "pirinpinpong"</p>
+    <p>Agrega contenido aquí — Feliz segundo aniversario mi amor, en que momento pasaron ya dos años y ya mas tres de conocernos, lo del oxxo lo recuerdo como si fuera ayer ahh, bueno amor, si leiste esto es porque descifraste o yo te dije indirectamente que era el titulo del libro la contraseña, aun te espera varios secretos en esta pagina, disfrutalo que te traigo un buen contenido ahhh JAJAJAJA. Quiero decirte que no me arrepiento de nada contigo, que en estos momentos me quiero ingeniar como poder hacer algo nuevo para este aniversario, espero y no pienses que soy nerd al hacerte una pagina web, respeta. Hoy en nuestro dia, te podria decir miles de palabras que confirmen mi amor hacia ti, la cosa es que serian repetitivas, muchas gracias por estar a mi lado este tiempo, te juro que en ningun momento he dudado en seguir estando contigo. Contigo lo tengo absolutamente todo, me complementas al 100 x 100. Cuando termines de leer esto quiero que me mandes este mensaje en via messenger, tu no preguntes porqué "pirinpinpong"</p>
   </div>
   <br>
   <button class="confetti-btn" onclick="launchConfetti()">🎉 ¡Celebrar! 🎉</button>
