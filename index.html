@@ -231,6 +231,17 @@
 
   .locked-overlay.hidden { opacity:0; pointer-events:none; }
 
+  /* Cuando hay overlay activo, la sección no crece con el contenido oculto */
+  .section:has(.locked-overlay:not(.hidden)) {
+    min-height: 0 !important;
+    padding: 0 !important;
+  }
+
+  .section:has(.locked-overlay:not(.hidden)) .locked-overlay {
+    position: relative;
+    min-height: 280px;
+  }
+
   .lock-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
@@ -794,7 +805,7 @@
 </nav>
 
 <!-- ===== 1. CARTA ===== -->
-<section class="section" id="carta" style="position:relative; padding: 3rem 2rem;">
+<section class="section" id="carta" style="position:relative;">
   <div class="locked-overlay" id="lock-carta">
     <div class="lock-icon">💌</div>
     <p class="lock-title">Carta para ti</p>
