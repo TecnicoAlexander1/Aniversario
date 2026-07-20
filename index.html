@@ -1020,10 +1020,25 @@
       <textarea class="comment-input-area" id="comment-input" placeholder="Escribe aquí tu nota..."></textarea>
       <button class="comment-send-btn" onclick="sendComment()">Enviar 💘</button>
       <div class="comments-list" id="comments-list">
-        <!-- ✏️ EDITA AQUÍ el mensaje predeterminado -->
+
+        <!-- ✏️ MENSAJES PREDETERMINADOS — agrega o edita los que quieras -->
+        <!-- Copia el bloque <div class="comment-bubble default-msg">...</div> para agregar más -->
+
         <div class="comment-bubble default-msg">
           Hola mi amor, como ves hay apartados en los cuales te piden contraseña, hoy 1 de julio empieza el uso de esta pagina, en el cual tendras que descubrir que poner en cada una de las secciones, sabes que me gusta jugar de esta manera, como ves el contador de arriba son los dias que hemos estado juntos como pareja, como novios. Este sera un complemento de nuestro segundo aniversario, podras dejar tus notas que aunque no las podre ver, podras dejar lo que quieras, como tambien -.-. --- -. - .-. .- ... . --.-- .-    Espero y te entretengas en estos 5 meses que faltan para nuestro mes. Cada mes tendrias que encontrar que poner en cada apartado, te deseo suerte, ya que si no lo descubres en su respectivo mes, no tendras otra alternativa de poderla obtener. Te amo con todo mi corazon y me la pase muy bien estando contigo (Esto esta programado desde antes pero estoy seguro que me la pase bien contigo ahh). 
         </div>
+
+        <!-- ✏️ SEGUNDO MENSAJE — edita o borra este bloque -->
+        <div class="comment-bubble default-msg">
+          Contraseña del apartado "carta" descubierto: desdemicorazon 🎊
+        </div>
+
+        <!-- ✏️ Para agregar más mensajes, copia este bloque:
+        <div class="comment-bubble default-msg">
+          Tu mensaje aquí.
+        </div>
+        -->
+
       </div>
     </div>
     <!-- columna derecha: apartados dorados -->
@@ -1243,13 +1258,13 @@ function loadNotes() {
   } catch(e) {}
 }
 
-// Guardar todas las notas actuales
+// Guardar notas — excluye los mensajes predeterminados (default-msg)
 function saveNotes() {
   try {
-    const bubbles = document.querySelectorAll('#comments-list .comment-bubble');
+    const bubbles = document.querySelectorAll('#comments-list .comment-bubble:not(.default-msg)');
     const notes = Array.from(bubbles).reverse().map(b => ({
       text: b.childNodes[0].textContent,
-      time: b.querySelector('.comment-time').textContent
+      time: b.querySelector('.comment-time') ? b.querySelector('.comment-time').textContent : ''
     }));
     localStorage.setItem(NOTES_KEY, JSON.stringify(notes));
   } catch(e) {}
@@ -1265,7 +1280,7 @@ function loadSecrets() {
       const trigger = SECRET_TRIGGERS.find(t => t.key === k);
       if (trigger && !unlockedSecrets.has(k)) {
         unlockedSecrets.add(k);
-        revealSecretCard(trigger, false); // false = sin confetti al cargar
+        revealSecretCard(trigger, false);
       }
     });
   } catch(e) {}
