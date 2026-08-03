@@ -422,23 +422,134 @@
   /* ===== GALERÍA ===== */
   .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1rem;
-    max-width: 1000px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    max-width: 700px;
     margin: 0 auto;
   }
 
   .gallery-item {
-    border-radius: 12px;
-    overflow: hidden;
+    position: relative;
     aspect-ratio: 1;
+    overflow: hidden;
     cursor: pointer;
-    transition: transform .3s, box-shadow .3s;
+    background: rgba(137,180,232,.1);
   }
 
-  .gallery-item:hover { transform:scale(1.03); box-shadow:0 8px 30px rgba(137,180,232,.3); }
+  .gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .4s ease;
+  }
 
-  .gallery-item img { width:100%; height:100%; object-fit:cover; display:block; }
+  .gallery-item:hover img { transform: scale(1.06); }
+
+  /* Overlay con fecha al hacer hover */
+  .gallery-item .photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(26,37,53,.45);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: .6rem .8rem;
+    opacity: 0;
+    transition: opacity .3s;
+  }
+
+  .gallery-item:hover .photo-overlay { opacity: 1; }
+
+  .photo-date {
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-size: .72rem;
+    letter-spacing: .08em;
+    text-shadow: 0 1px 4px rgba(0,0,0,.4);
+  }
+
+  /* Modal tipo Instagram */
+  .img-modal {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.92);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .img-modal.open { display: flex; }
+
+  .modal-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90vw;
+  }
+
+  .modal-img-wrap {
+    position: relative;
+  }
+
+  .img-modal img {
+    max-width: 88vw;
+    max-height: 78vh;
+    border-radius: 4px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .modal-date-bar {
+    background: rgba(26,37,53,.85);
+    color: #c8d8f0;
+    font-family: 'Nunito', sans-serif;
+    font-size: .8rem;
+    letter-spacing: .1em;
+    padding: .5rem 1.2rem;
+    border-radius: 0 0 4px 4px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    color: #fff; font-size: 1.8rem;
+    cursor: pointer; background: none; border: none;
+    z-index: 10;
+  }
+
+  .modal-nav {
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    color: #fff; font-size: 2rem;
+    cursor: pointer; background: none; border: none;
+    padding: .5rem;
+    opacity: .7;
+    transition: opacity .2s;
+  }
+
+  .modal-nav:hover { opacity: 1; }
+  .modal-prev { left: -3rem; }
+  .modal-next { right: -3rem; }
+
+  @media (max-width: 600px) {
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .modal-prev { left: .2rem; }
+    .modal-next { right: .2rem; }
+  }
+
+  /* Secret card con imagen */
+  .secret-card-img {
+    width: 100%;
+    max-height: 260px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: .8rem;
+    display: block;
+  }
 
   /* ===== TIMELINE ===== */
   .timeline {
@@ -833,7 +944,7 @@
   <!-- ✏️ EDITA AQUÍ el texto de la carta -->
   <div class="carta-wrapper">
     <div class="carta-papel">
-      <p class="carta-intro">La primer contraseña que descubriste mi amor, hablando el apartado, espero y no haya sido tan difícil, ya que para mi seria la mas fácil de todas. Empezemos.</p>
+      <p class="carta-intro">La primer contraseña que descubriste mi amor, hablando del apartado, espero y no haya sido tan difícil, ya que para mi seria la mas fácil de todas. Empezemos.</p>
       <div class="carta-encabezado">
         <span>Para: Lizeth</span>
         <span>De: Alexander</span>
@@ -853,7 +964,7 @@
   <!-- Segunda carta con candado propio -->
   <div style="margin-top: 2.5rem;">
     <div class="locked-overlay" id="lock-carta2" style="position:relative; min-height:220px; border-radius:16px; margin-bottom:0;">
-      <div class="lock-icon">💛</div>
+      <div class="lock-icon">💞</div>
       <p class="lock-title">Hay algo más...</p>
       <p class="lock-hint">Ingresa la contraseña para leer</p>
       <div class="pw-wrap">
@@ -861,7 +972,7 @@
         <button type="button" class="pw-toggle" onclick="togglePw('pw-carta2', this)" title="Mostrar/ocultar">👁️</button>
         <button class="unlock-btn" onclick="tryUnlock2()">Abrir ✨</button>
       </div>
-      <p class="lock-err" id="err-carta2">Contraseña incorrecta mi amor, ni porque te ayude ahh 💔</p>
+      <p class="lock-err" id="err-carta2">Contraseña incorrecta mi amor hermoso, te amo, la contraseña esta en...💔</p>
     </div>
     <!-- ✏️ EDITA AQUÍ el contenido de la segunda carta -->
     <div id="content-carta2" style="display:none;">
@@ -872,8 +983,10 @@
             <span>De: Alexander</span>
           </div>
           <div class="carta-cuerpo">
-            <p>Agrega aquí el contenido de tu segunda carta.</p>
-          </div>
+            <p>Mi amor, en el primer momento en que te vi jamás me hubiera imaginado, lo que termino pasandonos. Hablar de tu forma de ser es fácil, pero hablar de lo que me haces sentir físicamente es entrar en un momento donde me quedo sin palabras. Me vuelves loco, así de simple. Me fascina la forma en que me atraes, el cómo te ves cuando no te das cuenta de que te estoy mirando y la forma en que tus ojos y tu sonrisa tienen el control absoluto de mi atención. Hay una atracción física contigo que no puedo ni quiero disimular; me basta con tenerte cerca para que el pulso se me acelere. Eres hermosa por donde se te mire, y la verdad es que recorrer cada detalle de ti, perderme en tu piel y sentir esa conexión física tan fuerte que tenemos es de mis cosas favoritas ultimamente. Me encantas, en todos los sentidos posibles.</p>
+	    <p>Si tu personalidad me atrapó, tu físico es lo que me termina de desarmar. Tienes una belleza que no solo se nota, se siente y brilla (literalmente). Hay algo en la forma en que me miras, en el brillo de tu cara y en cómo cada uno de tus detalles parece hecho a la medida para volverme loco. No es solo lo hermosa que te ves cuando te arreglas, es lo irresistible que me pareces en tu estado más natural. Estar cerca de ti es una tentación constante; me encanta la forma en que nos buscamos sin decir nada y la química tan ridículamente fuerte que hay entre los dos. Me fascinas por dentro, y por dentro, pero por fuera simplemente no puedo quitarte los ojos encima.</p>
+             <p>Llegar a esta parte es dejar de lado lo bonito y hablar de lo que nos pasa cuando apagamos la luz y nos quedamos solos, o no tan solos. Me vuelves loco, pero en el sentido más físico y urgente de la palabra. No te imaginas el efecto que tienes en mí; me basta con sentir tu respiración cerca, tus sonidos, ver cómo me miras o tocarte un segundo para que se me olvide todo lo demás. Me encanta la forma en que nos buscamos, la intensidad con la que nos provocamos. Me dan ganas de comerte entera cada vez que te tengo enfrente, o encima de ti, y la verdad es que nunca voy a tener suficiente de ti. Me tientas y me encantas.</p>
+          </div> 
           <div class="carta-firma">Con todo mi amor,<br><strong>Alexander</strong> 💛</div>
         </div>
       </div>
@@ -901,13 +1014,35 @@
     <h2 class="section-title">Nuestra galería</h2>
     <div class="section-divider"></div>
   </div>
-  <!-- ✏️ EDITA AQUÍ: reemplaza los src="" con rutas a tus imágenes (coloca las fotos en la misma carpeta) -->
+  <!-- ✏️ GALERÍA — para agregar fotos copia el bloque de ejemplo -->
+  <!-- Pon las fotos en la misma carpeta que el HTML y sube ambas a GitHub -->
   <div class="gallery-grid" id="gallery-grid">
-    <div class="placeholder-msg" style="grid-column:1/-1;">📷 Agrega contenido — coloca fotos en la misma carpeta y edita el src aquí</div>
-    <!-- Ejemplo para agregar fotos:
-    <div class="gallery-item" onclick="openModal('foto1.jpg')"><img src="foto1.jpg" alt=""></div>
-    <div class="gallery-item" onclick="openModal('foto2.jpg')"><img src="foto2.jpg" alt=""></div>
+
+    <!-- ✏️ EJEMPLO — copia este bloque por cada foto que quieras agregar:
+    <div class="gallery-item" onclick="openModalNav(0)">
+      <img src="NOMBRE_FOTO.jpg" alt="">
+      <div class="photo-overlay"><span class="photo-date">Mes Año</span></div>
+    </div>
     -->
+
+    <!-- ✏️ FOTO 1 — cambia el src y la fecha -->
+    <div class="gallery-item" onclick="openModalNav(0)">
+      <img src="foto1.jpg" alt="" data-date="Noviembre 2024">
+      <div class="photo-overlay"><span class="photo-date">Noviembre 2024</span></div>
+    </div>
+
+    <!-- ✏️ FOTO 2 — cambia el src y la fecha -->
+    <div class="gallery-item" onclick="openModalNav(1)">
+      <img src="foto2.jpg" alt="" data-date="Diciembre 2024">
+      <div class="photo-overlay"><span class="photo-date">Diciembre 2024</span></div>
+    </div>
+
+    <!-- ✏️ FOTO 3 — cambia el src y la fecha -->
+    <div class="gallery-item" onclick="openModalNav(2)">
+      <img src="foto3.jpg" alt="" data-date="Enero 2025">
+      <div class="photo-overlay"><span class="photo-date">Enero 2025</span></div>
+    </div>
+
   </div>
   </div>
 </section>
@@ -1025,7 +1160,7 @@
         <!-- Copia el bloque <div class="comment-bubble default-msg">...</div> para agregar más -->
 
         <div class="comment-bubble default-msg">
-          Hola mi amor, como ves hay apartados en los cuales te piden contraseña, hoy 1 de julio empieza el uso de esta pagina, en el cual tendras que descubrir que poner en cada una de las secciones, sabes que me gusta jugar de esta manera, como ves el contador de arriba son los dias que hemos estado juntos como pareja, como novios. Este sera un complemento de nuestro segundo aniversario, podras dejar tus notas que aunque no las podre ver, podras dejar lo que quieras, como tambien las CONTRASEÑAS.Espero y te entretengas en estos 5 meses que faltan para nuestro mes. Cada mes tendrias que encontrar que poner en cada apartado, te deseo suerte, ya que si no lo descubres en su respectivo mes, no tendras otra alternativa de poderla obtener. Te amo con todo mi corazon y me la pase muy bien estando contigo (Esto esta programado desde antes pero estoy seguro que me la pase bien contigo ahh). 
+          Hola mi amor, como ves hay apartados en los cuales te piden contraseña, hoy 1 de julio empieza el uso de esta pagina, en el cual tendras que descubrir que poner en cada una de las secciones, sabes que me gusta jugar de esta manera, como ves el contador de arriba son los dias que hemos estado juntos como pareja, como novios. Este sera un complemento de nuestro segundo aniversario, podras dejar tus notas que aunque no las podre ver, podras dejar lo que quieras, como tambien las CONTRASEÑAS. Espero y te entretengas en estos 5 meses que faltan para nuestro mes. Cada mes tendrias que encontrar que poner en cada apartado, te deseo suerte, ya que si no lo descubres en su respectivo mes, no tendras otra alternativa de poderla obtener. Te amo con todo mi corazon y me la pase muy bien estando contigo (Esto esta programado desde antes pero estoy seguro que me la pase bien contigo ahh). 
         </div>
 
         <!-- ✏️ SEGUNDO MENSAJE — edita o borra este bloque -->
@@ -1076,10 +1211,17 @@
   <button class="confetti-btn" onclick="launchConfetti()">🎉 ¡Celebrar! 🎉</button>
 </section>
 
-<!-- MODAL -->
-<div class="img-modal" id="img-modal" onclick="this.classList.remove('open')">
-  <button class="modal-close">✕</button>
-  <img id="modal-img" src="" alt="">
+<!-- MODAL tipo Instagram con navegación -->
+<div class="img-modal" id="img-modal">
+  <button class="modal-close" onclick="document.getElementById('img-modal').classList.remove('open')">✕</button>
+  <div class="modal-inner">
+    <div class="modal-img-wrap">
+      <button class="modal-nav modal-prev" onclick="navModal(-1)">‹</button>
+      <img id="modal-img" src="" alt="">
+      <button class="modal-nav modal-next" onclick="navModal(1)">›</button>
+    </div>
+    <div class="modal-date-bar" id="modal-date"></div>
+  </div>
 </div>
 
 <footer>Hecho con todo mi cariño "cute" — Jaime Alexander Arce Jasso</footer>
@@ -1109,12 +1251,259 @@ const SECRET_TRIGGERS = [
     number: '1',        // número que aparece en el badge amarillo
     content: 'daaaah, no era tan dificil'
   },
-  // Para agregar más, copia el bloque de arriba:
-  // {
-  //   key: 'otracontraseña',
-  //   number: '2',
-  //   content: 'Contenido del apartado 2.'
-  // },
+{
+    key: 'Vamos a explorar el cielo juntos',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '2',        // número que aparece en el badge amarillo
+    content: 'Una hermosa frase dicha por ti babys. Fue una frase que se queda grabada porque dice más de lo que parece. Cuando me mencionaste, el cielo juntos, no solo me regalaste una idea hermosa, me regalaste una certeza: la de saber que no hay meta lejana que no quiera descubrir a tu lado. Con esta frase no solo es un pequeño reflejo de todo lo que sentimos, tambien del universo entero que todavía nos queda por recorrer. '
+  },
+{
+    key: '123456789sss',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '3',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil',  // ✏️ texto (déjalo vacío '' si no quieres texto)
+    image: ''  // ✏️ pon aquí el nombre de tu imagen, ej: 'recuerdo.jpg' (déjalo '' si no quieres imagen)
+               // También puedes poner solo imagen sin texto, o ambos
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '4',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  }, 
+{
+    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '5',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '6',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  }, 
+{
+    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '7',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '8',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  }, 
+{
+    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '9',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '10',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  }, 
+{
+    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '11',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '12',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  }, 
+{
+    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '13',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '14',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  }, 
+{
+    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '15',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '16',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  }, 
+{
+    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '17',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '18',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  }, 
+{
+    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '19',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '20',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  }, 
+{
+    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '21',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '22',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  }, 
+{
+    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '23',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '24',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  }, 
+{
+    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '25',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '26',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  }, 
+{
+    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '27',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '28',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  }, 
+{
+    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '29',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '30',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  }, 
+{
+    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '31',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '32',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  }, 
+{
+    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '33',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '34',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  }, 
+{
+    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '35',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '36',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  }, 
+{
+    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '37',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '38',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  }, 
+{
+    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '39',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '40',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  }, 
+{
+    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '41',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '42',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  }, 
+{
+    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '43',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '44',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  }, 
+{
+    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '45',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '46',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  }, 
+{
+    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '47',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '48',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '49',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },
+{
+    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '50',        // número que aparece en el badge amarillo
+    content: 'daaaah, no era tan dificil'
+  },   
+{
+    key: '1 de julio',   // ✏️ CONTRASEÑA que ella debe escribir
+    number: '¿?¿?¿?',        // número que aparece en el badge amarillo
+    content: 'Bueno mi amor, a lo mejor te sorprendiste por lo sencillo que es la contraseña, pero sabes, este apartado tiene algo muy peculiar. Como pudiste haberlo descubierto desde el principio, como a mediados o ya al final, de que concluyera la pagina. Pues con este apartado, te ganaste el txt (bloc de notas) de la pagina, es como tener la pagina web pero en fisico, osea impresa, solo que, no solo fue descubrir el apartado, este regalo se validaria, si es que descubriste TODOS LOS SECRETOS DE ELLA, es como "Platinar" un videojuego de la play jajaja. Has respetar el cupon cuando ya lo hayas descubierto.'
+  }, 
+    
 ];
 
 // Fecha de inicio de la relación
@@ -1326,9 +1715,17 @@ function revealSecretCard(trigger, withConfetti = true) {
   const container = document.getElementById('secret-cards-list');
   const card = document.createElement('div');
   card.className = 'secret-card visible';
+  // Puede tener: solo texto, solo imagen, o ambos
+  const imgHtml = trigger.image
+    ? `<img class="secret-card-img" src="${trigger.image}" alt="">`
+    : '';
+  const textHtml = trigger.content
+    ? `<div class="secret-card-body">${trigger.content}</div>`
+    : '';
   card.innerHTML = `
     <div class="secret-card-num">✨ ${trigger.number} ✨</div>
-    <div class="secret-card-body">${trigger.content}</div>
+    ${imgHtml}
+    ${textHtml}
   `;
   container.appendChild(card);
   document.getElementById('secrets-label').classList.add('visible');
@@ -1347,14 +1744,43 @@ document.getElementById('comment-input').addEventListener('keydown', e => {
 loadNotes();
 loadSecrets();
 
-// ===== MODAL ===== 
-function openModal(src) {
-  document.getElementById('modal-img').src = src;
+// ===== MODAL CON NAVEGACIÓN =====
+let currentModalIndex = 0;
+
+function getGalleryItems() {
+  return Array.from(document.querySelectorAll('.gallery-item img'));
+}
+
+function openModalNav(index) {
+  const items = getGalleryItems();
+  if (!items.length) return;
+  currentModalIndex = index;
+  const img = items[index];
+  document.getElementById('modal-img').src = img.src;
+  document.getElementById('modal-date').textContent = img.getAttribute('data-date') || '';
   document.getElementById('img-modal').classList.add('open');
 }
-document.getElementById('img-modal').onclick = function(e) {
-  if (e.target === this || e.target.classList.contains('modal-close')) this.classList.remove('open');
-};
+
+function navModal(dir) {
+  const items = getGalleryItems();
+  currentModalIndex = (currentModalIndex + dir + items.length) % items.length;
+  const img = items[currentModalIndex];
+  document.getElementById('modal-img').src = img.src;
+  document.getElementById('modal-date').textContent = img.getAttribute('data-date') || '';
+}
+
+// Cerrar al click fuera de la imagen
+document.getElementById('img-modal').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('open');
+});
+
+// Navegación con teclado
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('img-modal').classList.contains('open')) return;
+  if (e.key === 'ArrowRight') navModal(1);
+  if (e.key === 'ArrowLeft') navModal(-1);
+  if (e.key === 'Escape') document.getElementById('img-modal').classList.remove('open');
+});
 
 // ===== CONFETTI =====
 function launchConfetti() {
