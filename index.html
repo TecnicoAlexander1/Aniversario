@@ -886,6 +886,71 @@
     .tl-dot { position:absolute; left:13px; }
     .tl-item { position:relative; }
   }
+  /* ===== HISTORIA Y FECHAS ===== */
+  .historia-texto {
+    max-width: 680px;
+    margin: 0 auto 1rem;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--text);
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  .historia-texto p { margin-bottom: 1.2rem; text-indent: 1.5em; }
+
+  .fechas-header { text-align: center; }
+
+  .fechas-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    color: var(--text);
+    margin-bottom: .3rem;
+  }
+
+  .fechas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 1.2rem;
+    max-width: 900px;
+    margin: 2rem auto 0;
+  }
+
+  .fecha-card {
+    background: #fff;
+    border: 1px solid rgba(137,180,232,.2);
+    border-radius: 16px;
+    padding: 1.4rem 1.2rem;
+    text-align: center;
+    box-shadow: 0 3px 16px rgba(137,180,232,.1);
+    transition: transform .3s, box-shadow .3s;
+  }
+
+  .fecha-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 28px rgba(137,180,232,.2);
+  }
+
+  .fecha-emoji { font-size: 1.8rem; display: block; margin-bottom: .5rem; }
+
+  .fecha-fecha {
+    font-family: 'Nunito', sans-serif;
+    font-size: .72rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: .4rem;
+  }
+
+  .fecha-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
 </style>
 </head>
 <body>
@@ -1063,26 +1128,130 @@
   <div id="content-linea" style="display:none;">
   <div class="section-header">
     <p class="section-eyebrow">nuestra historia</p>
-    <h2 class="section-title">Línea de tiempo</h2>
+    <h2 class="section-title">Nuestra historia</h2>
     <div class="section-divider"></div>
   </div>
-  <!-- ✏️ EDITA AQUÍ: agrega o modifica los items de la línea de tiempo -->
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-content">
-        <p class="tl-date">Agrega una fecha</p>
-        <p class="tl-text">Agrega contenido aquí.</p>
-      </div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-content">
-        <p class="tl-date">Agrega una fecha</p>
-        <p class="tl-text">Agrega contenido aquí.</p>
-      </div>
-    </div>
+
+  <!-- ✏️ EDITA AQUÍ el texto de la historia -->
+  <div class="historia-texto">
+    <p>Todo comenzó en la prepa, en el CBT, entre pasillos y salones que jamás imaginamos que serían testigos del inicio de algo tan grande. No fuimos amigos primero, ni hubo un proceso lento de conocernos poco a poco en persona: simplemente empezamos a hablar por Instagram, mensaje tras mensaje, hasta que esas conversaciones se convirtieron en ganas de vernos, y esas ganas se convirtieron en una primera salida.</p>
+    <p>Desde ese momento, todo fue distinto. Lo que comenzó como la simple intención de conocerte, de intentar enamorarte, se transformó poco a poco en algo que ni yo mismo esperaba: terminé muriéndome de amor por ti. No fue un amor que llegó de golpe, fue uno que se construyó con cada salida, cada plática, cada risa compartida, hasta que ya no hubo forma de imaginar mi vida sin ti en ella.</p>
+    <p>Nuestros amigos de ese entonces también empezaron a salir juntos en ese entonces, como si el destino hubiera acomodado las piezas para que todos encontráramos a alguien al mismo tiempo. Pero el tiempo fue pasando, y aunque los demás se fueron separando una a una, nosotros seguimos ahí, firmes, eligiéndonos una y otra vez. Hoy, de todo ese grupo, somos los únicos que seguimos juntos, y eso dice mucho de lo que hemos construido.</p>
+    <p>En el camino, vivimos momentos que nos unieron aún más, como el haber compartido nuestra primera vez, juntos, algo que marcó una etapa distinta en nuestra relación, un paso que dimos los dos, de la mano, con la confianza que solo el tiempo y el cariño genuino pueden dar.</p>
+    <p>Y así, entre la prepa, y en nuestra etapa de la universidad y ahora también el trabajo, mi amor por ti jamás ha disminuido. Al contrario, ha ido encontrando nuevas formas de crecer con cada etapa que atravesamos. Hoy, mientras cada uno se forma profesionalmente, seguimos con la misma meta de siempre: trabajar, no solo por nosotros mismos, sino el uno por el otro, para ser mejores personas, mejor pareja, y construir juntos todo lo que aún nos falta por vivir.</p>
+    <p>Porque lo nuestro no empezó como una amistad que se transformó en amor, empezó siendo algo inesperado que, con el tiempo, se volvió lo más seguro y real que tengo.</p>
+
   </div>
+
+  <!-- FECHAS IMPORTANTES -->
+  <div class="fechas-header">
+    <p class="section-eyebrow" style="margin-top:3rem;">fechas que importan</p>
+    <h3 class="fechas-title">Momentos que no olvidamos</h3>
+    <div class="section-divider"></div>
+  </div>
+
+  <!-- ✏️ EDITA O AGREGA FECHAS — copia un bloque .fecha-card para agregar más, borra uno para quitar -->
+  <div class="fechas-grid">
+
+    <div class="fecha-card">
+      <span class="fecha-emoji">🌟</span>
+      <p class="fecha-fecha">22 Nov 2024</p>
+      <p class="fecha-desc">El día que dijimos que sí 💛</p>
+    </div>
+
+    <div class="fecha-card">
+      <span class="fecha-emoji">👀</span>
+      <p class="fecha-fecha">Agrega una fecha</p>
+      <p class="fecha-desc">Agrega descripción aquí.</p>
+    </div>
+
+    <div class="fecha-card">
+      <span class="fecha-emoji">💬</span>
+      <p class="fecha-fecha">Agrega una fecha</p>
+      <p class="fecha-desc">Agrega descripción aquí.</p>
+    </div>
+
+    <div class="fecha-card">
+      <span class="fecha-emoji">🎶</span>
+      <p class="fecha-fecha">Agrega una fecha</p>
+      <p class="fecha-desc">Agrega descripción aquí.</p>
+    </div>
+
+    <div class="fecha-card">
+      <span class="fecha-emoji">🥺</span>
+      <p class="fecha-fecha">Agrega una fecha</p>
+      <p class="fecha-desc">Agrega descripción aquí.</p>
+    </div>
+
+    <div class="fecha-card">
+      <span class="fecha-emoji">🌙</span>
+      <p class="fecha-fecha">Agrega una fecha</p>
+      <p class="fecha-desc">Agrega descripción aquí.</p>
+    </div>
+
+    <div class="fecha-card">
+      <span class="fecha-emoji">😂</span>
+      <p class="fecha-fecha">Agrega una fecha</p>
+      <p class="fecha-desc">Agrega descripción aquí.</p>
+    </div>
+
+    <div class="fecha-card">
+      <span class="fecha-emoji">🎂</span>
+      <p class="fecha-fecha">Agrega una fecha</p>
+      <p class="fecha-desc">Agrega descripción aquí.</p>
+    </div>
+
+    <div class="fecha-card">
+      <span class="fecha-emoji">💌</span>
+      <p class="fecha-fecha">Agrega una fecha</p>
+      <p class="fecha-desc">Agrega descripción aquí.</p>
+    </div>
+
+    <div class="fecha-card">
+      <span class="fecha-emoji">🌅</span>
+      <p class="fecha-fecha">Agrega una fecha</p>
+      <p class="fecha-desc">Agrega descripción aquí.</p>
+    </div>
+
+    <div class="fecha-card">
+      <span class="fecha-emoji">🎉</span>
+      <p class="fecha-fecha">Agrega una fecha</p>
+      <p class="fecha-desc">Agrega descripción aquí.</p>
+    </div>
+
+    <div class="fecha-card">
+      <span class="fecha-emoji">🍕</span>
+      <p class="fecha-fecha">Agrega una fecha</p>
+      <p class="fecha-desc">Agrega descripción aquí.</p>
+    </div>
+
+    <div class="fecha-card">
+      <span class="fecha-emoji">🚗</span>
+      <p class="fecha-fecha">Agrega una fecha</p>
+      <p class="fecha-desc">Agrega descripción aquí.</p>
+    </div>
+
+    <div class="fecha-card">
+      <span class="fecha-emoji">💙</span>
+      <p class="fecha-fecha">Agrega una fecha</p>
+      <p class="fecha-desc">Agrega descripción aquí.</p>
+    </div>
+
+    <div class="fecha-card">
+      <span class="fecha-emoji">🌸</span>
+      <p class="fecha-fecha">22 Nov 2026</p>
+      <p class="fecha-desc">Nuestro segundo aniversario 💛</p>
+    </div>
+
+  </div>
+  <!-- ✏️ Para AGREGAR más: copia este bloque arriba del cierre </div> de fechas-grid:
+  <div class="fecha-card">
+    <span class="fecha-emoji">🌟</span>
+    <p class="fecha-fecha">Fecha aquí</p>
+    <p class="fecha-desc">Descripción aquí.</p>
+  </div>
+  Para QUITAR: borra el bloque completo de fecha-card que no quieras -->
+
   </div>
 </section>
 
@@ -1133,81 +1302,81 @@
     <div class="reason-card"><div class="reason-num">22</div><p class="reason-text">Amo tu forma de hablar cuando estás emocionada.</p></div>
     <div class="reason-card"><div class="reason-num">23</div><p class="reason-text">Amo cómo te enojas y luego se te pasa rápido al hacerte reir.</p></div>
     <div class="reason-card"><div class="reason-num">24</div><p class="reason-text">Amo tus ocurrencias random.🤙🏻</p></div>
-<div class="reason-card"><div class="reason-num">25</div><p class="reason-text">Amo cómo organizas todo a tu manera.</p></div>
-<div class="reason-card"><div class="reason-num">26</div><p class="reason-text">Amo nuestras pláticas hasta tarde aunque se nos pase el tiempo.</p></div>
-<div class="reason-card"><div class="reason-num">27</div><p class="reason-text">Amo cómo resolvemos las cosas hablando.</p></div>
-<div class="reason-card"><div class="reason-num">28</div><p class="reason-text">Amo cómo me complementas.</p></div>
-<div class="reason-card"><div class="reason-num">29</div><p class="reason-text">Amo nuestros silencios cómodos.</p></div>
-<div class="reason-card"><div class="reason-num">30</div><p class="reason-text">Amo cómo construyes planes para los dos.</p></div>
-<div class="reason-card"><div class="reason-num">31</div><p class="reason-text">Amo cómo encajamos, aunque seamos diferentes.</p></div>
-<div class="reason-card"><div class="reason-num">32</div><p class="reason-text">Amo cómo me entiendes sin que diga nada.</p></div>
-<div class="reason-card"><div class="reason-num">33</div><p class="reason-text">Amo cada recuerdo que hemos creado.</p></div>
-<div class="reason-card"><div class="reason-num">34</div><p class="reason-text">Amo cómo cada día se siente como elegirte de nuevo.</p></div>
-<div class="reason-card"><div class="reason-num">35</div><p class="reason-text">Amo tu forma de defender lo que crees justo aunque no lo sea.</p></div>
-<div class="reason-card"><div class="reason-num">36</div><p class="reason-text">Amo tu carácter fuerte cuando hace falta.</p></div>
-<div class="reason-card"><div class="reason-num">37</div><p class="reason-text">Amo tu ternura de nena mariposa.</p></div>
-<div class="reason-card"><div class="reason-num">38</div><p class="reason-text">Amo que me hagas querer ser mejor.</p></div>
-<div class="reason-card"><div class="reason-num">39</div><p class="reason-text">Amo que me des ganas de construir un futuro juntos.</p></div>
-<div class="reason-card"><div class="reason-num">40</div><p class="reason-text">Amo que me hagas sentir tranquilo.</p></div>
-<div class="reason-card"><div class="reason-num">41</div><p class="reason-text">Amo que me inspires cada día.</p></div>
-<div class="reason-card"><div class="reason-num">42</div><p class="reason-text">Amo que me hagas sentir afortunado de tenerte.</p></div>
-<div class="reason-card"><div class="reason-num">43</div><p class="reason-text">Amo que me hagas sentir en calma en medio del caos.</p></div>
-<div class="reason-card"><div class="reason-num">44</div><p class="reason-text">Amo que me des ganas de cuidarte siempre.</p></div>
-<div class="reason-card"><div class="reason-num">45</div><p class="reason-text">Amo que me hagas sentir amado sin condiciones.</p></div>
-<div class="reason-card"><div class="reason-num">46</div><p class="reason-text">Amo que me hagas sentir que nuestro amor vale la pena.</p></div>
-<div class="reason-card"><div class="reason-num">47</div><p class="reason-text">Amo que refuerces el porqué te escogí a ti.</p></div>
-<div class="reason-card"><div class="reason-num">48</div><p class="reason-text">Amo que sueñes en grande junto a mí.</p></div>
-<div class="reason-card"><div class="reason-num">49</div><p class="reason-text">Amo que quieras un futuro conmigo.</p></div>
-<div class="reason-card"><div class="reason-num">50</div><p class="reason-text">Amo que planeemos juntos cada meta.</p></div>
-<div class="reason-card"><div class="reason-num">51</div><p class="reason-text">Amo que me veas como parte de tus planes.</p></div>
-<div class="reason-card"><div class="reason-num">52</div><p class="reason-text">Amo que luches por lo nuestro.</p></div>
-<div class="reason-card"><div class="reason-num">53</div><p class="reason-text">Amo que creas en lo que podemos construir aunque falte mucho.</p></div>
-<div class="reason-card"><div class="reason-num">54</div><p class="reason-text">Amo que quieras crecer conmigo, no sin mí.</p></div>
-<div class="reason-card"><div class="reason-num">55</div><p class="reason-text">Amo cómo te ves recién despierta.</p></div>
-<div class="reason-card"><div class="reason-num">56</div><p class="reason-text">Amo tus mensajes de buenos días.</p></div>
-<div class="reason-card"><div class="reason-num">57</div><p class="reason-text">Amo cómo te preocupas por mi.</p></div>
-<div class="reason-card"><div class="reason-num">58</div><p class="reason-text">Amo tus consejos, aunque a veces no los pida.</p></div>
-<div class="reason-card"><div class="reason-num">59</div><p class="reason-text">Amo que seas mi persona favorita para contarle todo.</p></div>
-<div class="reason-card"><div class="reason-num">60</div><p class="reason-text">Amo que, sin importar el día, siempre quiera verte.</p></div>
-<div class="reason-card"><div class="reason-num">61</div><p class="reason-text">Amo que seas exactamente quien eres.</p></div>
-<div class="reason-card"><div class="reason-num">62</div><p class="reason-text">Amo tu independencia.</p></div>
-<div class="reason-card"><div class="reason-num">63</div><p class="reason-text">Amo cómo me haces sentir que no estoy solo.</p></div>
-<div class="reason-card"><div class="reason-num">64</div><p class="reason-text">Amo cómo recuerdas cada detalle que te cuento, bueno a veces ahh.</p></div>
-<div class="reason-card"><div class="reason-num">65</div><p class="reason-text">Amo cómo me haces sentir orgulloso de ti.</p></div>
-<div class="reason-card"><div class="reason-num">66</div><p class="reason-text">Amo cómo me buscas incluso en tus días ocupados.</p></div>
-<div class="reason-card"><div class="reason-num">67</div><p class="reason-text">Amo cómo me haces sentir prioridad.</p></div>
-<div class="reason-card"><div class="reason-num">68</div><p class="reason-text">Amo cómo cuidas los detalles que a mí se me olvidan.</p></div>
-<div class="reason-card"><div class="reason-num">69</div><p class="reason-text">Amo cómo siempre tienes un "aquí estoy" para mí.</p></div>
-<div class="reason-card"><div class="reason-num">70</div><p class="reason-text">Amo cómo me haces sentir que puedo contarte todo.</p></div>
-<div class="reason-card"><div class="reason-num">71</div><p class="reason-text">Amo tu cabello, y más cómo se ve al natural sin planchar, pero también planchado me gusta.</p></div>
-<div class="reason-card"><div class="reason-num">72</div><p class="reason-text">Amo la forma en que se te ilumina la cara cuando ríes.</p></div>
-<div class="reason-card"><div class="reason-num">73</div><p class="reason-text">Amo tu figura, entera, tal como es, dios mío santo.</p></div>
-<div class="reason-card"><div class="reason-num">74</div><p class="reason-text">Amo tus pestañas.</p></div>
-<div class="reason-card"><div class="reason-num">75</div><p class="reason-text">Amo tu piel, tan suave.</p></div>
-<div class="reason-card"><div class="reason-num">76</div><p class="reason-text">Amo cómo te queda cualquier cosa que te pongas.</p></div>
-<div class="reason-card"><div class="reason-num">77</div><p class="reason-text">Amo tus curvas.</p></div>
-<div class="reason-card"><div class="reason-num">78</div><p class="reason-text">Amo tu forma de moverte, tan natural.</p></div>
-<div class="reason-card"><div class="reason-num">79</div><p class="reason-text">Amo tu espalda, cuando te abrazo por detrás, y cuando esta descubierta.</p></div>
-<div class="reason-card"><div class="reason-num">80</div><p class="reason-text">Amo el calor de tu cuerpo junto al mío.</p></div>
-<div class="reason-card"><div class="reason-num">81</div><p class="reason-text">Amo el sudor que me haces provocar.</p></div>
-<div class="reason-card"><div class="reason-num">82</div><p class="reason-text">Amo cómo te ves cuando te arreglas para verme.</p></div>
-<div class="reason-card"><div class="reason-num">83</div><p class="reason-text">Amo cómo te ves sin nada de maquillaje.</p></div>
-<div class="reason-card"><div class="reason-num">84</div><p class="reason-text">Amo el misionero ahhhhhh.</p></div>
-<div class="reason-card"><div class="reason-num">85</div><p class="reason-text">Amo la confianza que hay entre nosotros cuando estamos solos.</p></div>
-<div class="reason-card"><div class="reason-num">86</div><p class="reason-text">Amo lo bien que se siente abrazarte antes de dormir.</p></div>
-<div class="reason-card"><div class="reason-num">87</div><p class="reason-text">Amo la conexión que sentimos cuando estamos cerca.</p></div>
-<div class="reason-card"><div class="reason-num">88</div><p class="reason-text">Amo cómo te acurrucas contra mí.</p></div>
-<div class="reason-card"><div class="reason-num">89</div><p class="reason-text">Amo la ternura con la que me tratas cuando estamos solos o no solos.</p></div>
-<div class="reason-card"><div class="reason-num">90</div><p class="reason-text">Amo cómo causas que busque la manera de poder verte.</p></div>
-<div class="reason-card"><div class="reason-num">91</div><p class="reason-text">Amo despertar a tu lado.</p></div>
-<div class="reason-card"><div class="reason-num">92</div><p class="reason-text">Amo cómo nuestra conexión crece cada vez más, en todos los sentidos.</p></div>
-<div class="reason-card"><div class="reason-num">93</div><p class="reason-text">Amo cómo te ríes de tus propios chistes, aunque ni sean buenos.</p></div>
-<div class="reason-card"><div class="reason-num">94</div><p class="reason-text">Amo cómo te emocionas con las series o películas que te gustan al decirme que las vea.</p></div>
-<div class="reason-card"><div class="reason-num">95</div><p class="reason-text">Amo tu forma de hacer pucheros cuando algo no te gusta.</p></div>
-<div class="reason-card"><div class="reason-num">96</div><p class="reason-text">Amo tus manías, hasta que me sacan una sonrisa.</p></div>
-<div class="reason-card"><div class="reason-num">97</div><p class="reason-text">Amo cómo te tomas selfies random y me las mandas.</p></div>
-<div class="reason-card"><div class="reason-num">98</div><p class="reason-text">Amo cómo tus manos buscan las mías sin pensarlo.</p></div>
-<div class="reason-card"><div class="reason-num">99</div><p class="reason-text">Amo cada beso, aunque sea el de la despedida.</p></div>
+    <div class="reason-card"><div class="reason-num">25</div><p class="reason-text">Amo cómo organizas todo a tu manera.</p></div>
+    <div class="reason-card"><div class="reason-num">26</div><p class="reason-text">Amo nuestras pláticas hasta tarde aunque se nos pase el tiempo.</p></div>
+    <div class="reason-card"><div class="reason-num">27</div><p class="reason-text">Amo cómo resolvemos las cosas hablando.</p></div>
+    <div class="reason-card"><div class="reason-num">28</div><p class="reason-text">Amo cómo me complementas.</p></div>
+    <div class="reason-card"><div class="reason-num">29</div><p class="reason-text">Amo nuestros silencios cómodos.</p></div>
+    <div class="reason-card"><div class="reason-num">30</div><p class="reason-text">Amo cómo construyes planes para los dos.</p></div>
+    <div class="reason-card"><div class="reason-num">31</div><p class="reason-text">Amo cómo encajamos, aunque seamos diferentes.</p></div>
+    <div class="reason-card"><div class="reason-num">32</div><p class="reason-text">Amo cómo me entiendes sin que diga nada.</p></div>
+    <div class="reason-card"><div class="reason-num">33</div><p class="reason-text">Amo cada recuerdo que hemos creado.</p></div>
+    <div class="reason-card"><div class="reason-num">34</div><p class="reason-text">Amo cómo cada día se siente como elegirte de nuevo.</p></div>
+    <div class="reason-card"><div class="reason-num">35</div><p class="reason-text">Amo tu forma de defender lo que crees justo aunque no lo sea.</p></div>
+    <div class="reason-card"><div class="reason-num">36</div><p class="reason-text">Amo tu carácter fuerte cuando hace falta.</p></div>
+    <div class="reason-card"><div class="reason-num">37</div><p class="reason-text">Amo tu ternura de nena mariposa.</p></div>
+    <div class="reason-card"><div class="reason-num">38</div><p class="reason-text">Amo que me hagas querer ser mejor.</p></div>
+    <div class="reason-card"><div class="reason-num">39</div><p class="reason-text">Amo que me des ganas de construir un futuro juntos.</p></div>
+    <div class="reason-card"><div class="reason-num">40</div><p class="reason-text">Amo que me hagas sentir tranquilo.</p></div>
+    <div class="reason-card"><div class="reason-num">41</div><p class="reason-text">Amo que me inspires cada día.</p></div>
+    <div class="reason-card"><div class="reason-num">42</div><p class="reason-text">Amo que me hagas sentir afortunado de tenerte.</p></div>
+    <div class="reason-card"><div class="reason-num">43</div><p class="reason-text">Amo que me hagas sentir en calma en medio del caos.</p></div>
+    <div class="reason-card"><div class="reason-num">44</div><p class="reason-text">Amo que me des ganas de cuidarte siempre.</p></div>
+    <div class="reason-card"><div class="reason-num">45</div><p class="reason-text">Amo que me hagas sentir amado sin condiciones.</p></div>
+    <div class="reason-card"><div class="reason-num">46</div><p class="reason-text">Amo que me hagas sentir que nuestro amor vale la pena.</p></div>
+    <div class="reason-card"><div class="reason-num">47</div><p class="reason-text">Amo que refuerces el porqué te escogí a ti.</p></div>
+    <div class="reason-card"><div class="reason-num">48</div><p class="reason-text">Amo que sueñes en grande junto a mí.</p></div>
+    <div class="reason-card"><div class="reason-num">49</div><p class="reason-text">Amo que quieras un futuro conmigo.</p></div>
+    <div class="reason-card"><div class="reason-num">50</div><p class="reason-text">Amo que planeemos juntos cada meta.</p></div>
+    <div class="reason-card"><div class="reason-num">51</div><p class="reason-text">Amo que me veas como parte de tus planes.</p></div>
+    <div class="reason-card"><div class="reason-num">52</div><p class="reason-text">Amo que luches por lo nuestro.</p></div>
+    <div class="reason-card"><div class="reason-num">53</div><p class="reason-text">Amo que creas en lo que podemos construir aunque falte mucho.</p></div>
+    <div class="reason-card"><div class="reason-num">54</div><p class="reason-text">Amo que quieras crecer conmigo, no sin mí.</p></div>
+    <div class="reason-card"><div class="reason-num">55</div><p class="reason-text">Amo cómo te ves recién despierta.</p></div>
+    <div class="reason-card"><div class="reason-num">56</div><p class="reason-text">Amo tus mensajes de buenos días.</p></div>
+    <div class="reason-card"><div class="reason-num">57</div><p class="reason-text">Amo cómo te preocupas por mi.</p></div>
+    <div class="reason-card"><div class="reason-num">58</div><p class="reason-text">Amo tus consejos, aunque a veces no los pida.</p></div>
+    <div class="reason-card"><div class="reason-num">59</div><p class="reason-text">Amo que seas mi persona favorita para contarle todo.</p></div>
+    <div class="reason-card"><div class="reason-num">60</div><p class="reason-text">Amo que, sin importar el día, siempre quiera verte.</p></div>
+    <div class="reason-card"><div class="reason-num">61</div><p class="reason-text">Amo que seas exactamente quien eres.</p></div>
+    <div class="reason-card"><div class="reason-num">62</div><p class="reason-text">Amo tu independencia.</p></div>
+    <div class="reason-card"><div class="reason-num">63</div><p class="reason-text">Amo cómo me haces sentir que no estoy solo.</p></div>
+    <div class="reason-card"><div class="reason-num">64</div><p class="reason-text">Amo cómo recuerdas cada detalle que te cuento, bueno a veces ahh.</p></div>
+    <div class="reason-card"><div class="reason-num">65</div><p class="reason-text">Amo cómo me haces sentir orgulloso de ti.</p></div>
+    <div class="reason-card"><div class="reason-num">66</div><p class="reason-text">Amo cómo me buscas incluso en tus días ocupados.</p></div>
+    <div class="reason-card"><div class="reason-num">67</div><p class="reason-text">Amo cómo me haces sentir prioridad.</p></div>
+    <div class="reason-card"><div class="reason-num">68</div><p class="reason-text">Amo cómo cuidas los detalles que a mí se me olvidan.</p></div>
+    <div class="reason-card"><div class="reason-num">69</div><p class="reason-text">Amo cómo siempre tienes un "aquí estoy" para mí.</p></div>
+    <div class="reason-card"><div class="reason-num">70</div><p class="reason-text">Amo cómo me haces sentir que puedo contarte todo.</p></div>
+    <div class="reason-card"><div class="reason-num">71</div><p class="reason-text">Amo tu cabello, y más cómo se ve al natural sin planchar, pero también planchado me gusta.</p></div>
+    <div class="reason-card"><div class="reason-num">72</div><p class="reason-text">Amo la forma en que se te ilumina la cara cuando ríes.</p></div>
+    <div class="reason-card"><div class="reason-num">73</div><p class="reason-text">Amo tu figura, entera, tal como es, dios mío santo.</p></div>
+    <div class="reason-card"><div class="reason-num">74</div><p class="reason-text">Amo tus pestañas.</p></div>
+    <div class="reason-card"><div class="reason-num">75</div><p class="reason-text">Amo tu piel, tan suave.</p></div>
+    <div class="reason-card"><div class="reason-num">76</div><p class="reason-text">Amo cómo te queda cualquier cosa que te pongas.</p></div>
+    <div class="reason-card"><div class="reason-num">77</div><p class="reason-text">Amo tus curvas.</p></div>
+    <div class="reason-card"><div class="reason-num">78</div><p class="reason-text">Amo tu forma de moverte, tan natural.</p></div>
+    <div class="reason-card"><div class="reason-num">79</div><p class="reason-text">Amo tu espalda, cuando te abrazo por detrás, y cuando esta descubierta.</p></div>
+    <div class="reason-card"><div class="reason-num">80</div><p class="reason-text">Amo el calor de tu cuerpo junto al mío.</p></div>
+    <div class="reason-card"><div class="reason-num">81</div><p class="reason-text">Amo el sudor que me haces provocar.</p></div>
+    <div class="reason-card"><div class="reason-num">82</div><p class="reason-text">Amo cómo te ves cuando te arreglas para verme.</p></div>
+    <div class="reason-card"><div class="reason-num">83</div><p class="reason-text">Amo cómo te ves sin nada de maquillaje.</p></div>
+    <div class="reason-card"><div class="reason-num">84</div><p class="reason-text">Amo el misionero ahhhhhh.</p></div>
+    <div class="reason-card"><div class="reason-num">85</div><p class="reason-text">Amo la confianza que hay entre nosotros cuando estamos solos.</p></div>
+    <div class="reason-card"><div class="reason-num">86</div><p class="reason-text">Amo lo bien que se siente abrazarte antes de dormir.</p></div>
+    <div class="reason-card"><div class="reason-num">87</div><p class="reason-text">Amo la conexión que sentimos cuando estamos cerca.</p></div>
+    <div class="reason-card"><div class="reason-num">88</div><p class="reason-text">Amo cómo te acurrucas contra mí.</p></div>
+    <div class="reason-card"><div class="reason-num">89</div><p class="reason-text">Amo la ternura con la que me tratas cuando estamos solos o no solos.</p></div>
+    <div class="reason-card"><div class="reason-num">90</div><p class="reason-text">Amo cómo causas que busque la manera de poder verte.</p></div>
+    <div class="reason-card"><div class="reason-num">91</div><p class="reason-text">Amo despertar a tu lado.</p></div>
+    <div class="reason-card"><div class="reason-num">92</div><p class="reason-text">Amo cómo nuestra conexión crece cada vez más, en todos los sentidos.</p></div>
+    <div class="reason-card"><div class="reason-num">93</div><p class="reason-text">Amo cómo te ríes de tus propios chistes, aunque ni sean buenos.</p></div>
+    <div class="reason-card"><div class="reason-num">94</div><p class="reason-text">Amo cómo te emocionas con las series o películas que te gustan al decirme que las vea.</p></div>
+   <div class="reason-card"><div class="reason-num">95</div><p class="reason-text">Amo tu forma de hacer pucheros cuando algo no te gusta.</p></div>
+   <div class="reason-card"><div class="reason-num">96</div><p class="reason-text">Amo tus manías, hasta que me sacan una sonrisa.</p></div>
+   <div class="reason-card"><div class="reason-num">97</div><p class="reason-text">Amo cómo te tomas selfies random y me las mandas.</p></div>
+   <div class="reason-card"><div class="reason-num">98</div><p class="reason-text">Amo cómo tus manos buscan las mías sin pensarlo.</p></div>
+   <div class="reason-card"><div class="reason-num">99</div><p class="reason-text">Amo cada beso, aunque sea el de la despedida.</p></div>
 
   </div>
   </div>
@@ -1269,7 +1438,7 @@
 
         <!-- ✏️ Para agregar más mensajes, copia este bloque:
         <div class="comment-bubble default-msg">
-          Tu mensaje aquí.
+          Contraseña del apartado "musica" descubierto: desdemicorazon 🎊
         </div>
         -->
 
@@ -1346,260 +1515,259 @@ const PASSWORDS = {
 // =============================================
 const SECRET_TRIGGERS = [
   {
-    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '1',        // número que aparece en el badge amarillo
+    key: '123456789',
+    number: '1',
     content: 'daaaah, no era tan dificil'
   },
 {
-    key: 'Vamos a explorar el cielo juntos',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '2',        // número que aparece en el badge amarillo
+    key: 'Vamos a explorar el cielo juntos',
+    number: '2',
     content: 'Una hermosa frase dicha por ti babys. Fue una frase que se queda grabada porque dice más de lo que parece. Cuando me mencionaste, el cielo juntos, no solo me regalaste una idea hermosa, me regalaste una certeza: la de saber que no hay meta lejana que no quiera descubrir a tu lado. Con esta frase no solo es un pequeño reflejo de todo lo que sentimos, tambien del universo entero que todavía nos queda por recorrer.'
   },
 {
-    key: 'Mensa',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '3',        // número que aparece en el badge amarillo
-    content: 'JAJAJAJ, Diego fue la primera persona en saber una contraseña para que se abra el apartado, muy bien babys, sigue asi que aun te falta muchoooo por desbloquear',  // ✏️ texto (déjalo vacío '' si no quieres texto)
-    image: ''  // ✏️ pon aquí el nombre de tu imagen, ej: 'recuerdo.jpg' (déjalo '' si no quieres imagen)
-               // También puedes poner solo imagen sin texto, o ambos
+    key: 'Mensa',
+    number: '3',
+    content: 'JAJAJAJ, Diego fue la primera persona en saber una contraseña para que se abra el apartado, muy bien babys, sigue asi que aun te falta muchoooo por desbloquear'
   },
 {
-    key: '37 Zacatecas',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '4',        // número que aparece en el badge amarillo
+    key: '37 Zacatecas',
+    number: '4',
     content: 'Felicidades mi amor, no sabia la dificultad de esta contraseña, espero y no te hayas tardado mucho. El apartado del mes AGOSTO se te desbloquea con la contraeña: entodaspiensoenti'
   }, 
 {
-    key: 'Mocosa',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '5',        // número que aparece en el badge amarillo
+    key: 'Mocosa',
+    number: '5',
     content: 'JAJAJAJAJA, que divertido babys, y es aun mas divertido que la contraseña se la sabia tu mamá desde el 9 de enero de 2006. Te amo babys'
   },
 {
-    key: 'Niñita Mariposa',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '6',        // número que aparece en el badge amarillo
+    key: 'Niñita Mariposa',
+    number: '6',
     content: 'Owww mi bebas. Te amo babys, nuevamente desbloqueaste otro apartado con tu fam. Solo te falta ver el testanebto de tu tatarabuelo para la siguiente ahhhh'
   }, 
 {
-    key: 'BBVA',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '7',        // número que aparece en el badge amarillo
-    content: 'Este apartado sera 2x1. Como que 2x1? Pues bueno para conseguir otra contraseña deberas depositarme $99 a mi cuenta BBVA desde tu cuenta BBVA, mandame captura de la transf. Te amoooo'
+    key: 'BBVA',
+    number: '7',
+    content: 'Este apartado sera 2x1. Como que 2x1? Pues bueno para conseguir otra contraseña deberas depositarme $22 a mi cuenta BBVA desde tu cuenta BBVA, mandame captura de la transf. Te amoooo'
   },
 {
-    key: '99',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '8',        // número que aparece en el badge amarillo
-    content: 'No era necesario la transferencia, solo era escribir nuevamente el monto, pero gracias babys, yo te amo babys'
+    key: 'BBVA22',
+    number: '8',
+    content: 'No todo es recompensas hacia mi eh babys, hay cositas para ti descubrelas, gracias babys, yo te amo babys'
   }, 
 {
-    key: 'Pug',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '9',        // número que aparece en el badge amarillo
+    key: 'Pug',
+    number: '9',
     content: 'owwww mimimimimmimiamorx'
   },
 {
-    key: 'Cruz Azul',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '10',        // número que aparece en el badge amarillo
+    key: 'Cruz Azul',
+    number: '10',
     content: 'LLEGÓ LA DECIMA!!!!!!!!!!!💙🚂'
   }, 
 {
-    key: 'Transferencia',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '11',        // número que aparece en el badge amarillo
+    key: 'Transferencia',
+    number: '11',
     content: 'Felicidades babys. Te ganaste tus $99 pesitos de regreso'
   },
 {
-    key: 'Takis',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '12',        // número que aparece en el badge amarillo
+    key: 'Takis',
+    number: '12',
     content: 'Para que este apartado se te haga valer, deberas regalarme unos takis, bai bai. Te amo babys'
   }, 
 {
-    key: 'Desayuno Rico',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '13',        // número que aparece en el badge amarillo
+    key: 'Desayuno Rico',
+    number: '13',
     content: 'ME DEBES DE PAGAR UN DESAYUNO, jijijijij es broma babys, te ganaste un desayuno pagado por mi. Te amo'
   },
 {
-    key: 'Gerard',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '14',        // número que aparece en el badge amarillo
-    content: 'Acabas de desbloquear el nombre de nuestro hijo, al desbloquear el apartado das la pauta a llamarlo asi, gracias babys.'
+    key: 'America',
+    number: '14',
+    content: 'De un padre Americanista, a ser Cruzazuleña de por vida'
   }, 
 {
-    key: 'Oliver',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '15',        // número que aparece en el badge amarillo
-    content: 'vaya nombre de mieee'
+    key: 'Pumas',
+    number: '15',
+    content: 'Pumas no, no es equipo grande, Pumas no, no es equipo grande'
   },
 {
-    key: 'Geometry Dash',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '16',        // número que aparece en el badge amarillo
+    key: 'Geometry Dash',
+    number: '16',
     content: 'Wow babys. Mira este sera el asunto, te hice un nivel de geometry dash, para conseguir un nuevo apartado, tendras que pasartelo, no es tan dificil, creo yo, espero y lo logres babys, obvio en normal NO en practica, te amo mucha suerte. El nivel se llama "Volemtyx"'
   }, 
 {
-    key: '',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '17',        // número que aparece en el badge amarillo
-    content: 'daaaah, no era tan dificil'
+    key: 'Commanders',
+    number: '17',
+    content: 'Digo'
   },
 {
-    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '18',        // número que aparece en el badge amarillo
-    content: 'daaaah, no era tan dificil'
+    key: 'Cowboys',
+    number: '18',
+    content: 'Papá de los commanderssssss'
   }, 
 {
-    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '19',        // número que aparece en el badge amarillo
-    content: 'daaaah, no era tan dificil'
+    key: 'Washington',
+    number: '19',
+    content: 'Digo'
   },
 {
-    key: 'Miedo',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '20',        // número que aparece en el badge amarillo
+    key: 'Miedo',
+    number: '20',
     content: 'El tiempo que llevamos no se mide en meses en el calendario, sino en cómo tus manos y las mías han aprendido a reconocerse de memoria. Conozco tu cuerpo como un refugio en medio del desorden; es la certeza física que tengo cuando todo lo demás empieza a tambalearse o complicarse. Sé que vienen los años pesados: la universidad, los horarios cruzados, lo laboral, el cansancio y las versiones nuevas de nosotros mismos que todavía ni siquiera conocemos. Da vértigo pensar en cómo el mundo exterior va a intentar apartarnos o cambiarnos el paso. No te prometo un destino escrito, porque no lo he visto, ni certezas mágicas que no nos pertenecen. Lo único que puedo ofrecerte es la voluntad firme de elegirte hoy, en este cuerpo y en este presente, y apostar por nosotros todos los días, incluso cuando el mañana nos cueste el doble.'
   }, 
 {
-    key: '',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '21',        // número que aparece en el badge amarillo
-    content: 'daaaah, no era tan dificil'
+    key: 'Tornado',   
+    number: '21',
+    content: 'El modelo de mi moto, moto que nos ha acompañado en varias salidas que hemos tenido babys, ha sido parte de nosotros'
   },
 {
-    key: '22 de noviembre',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '22',        // número que aparece en el badge amarillo
-    content: 'c'
+    key: '22 de noviembre',
+    number: '22',
+    content: 'Este no es el apartado especial de nuestro aniversario....'
   }, 
 {
-    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '23',        // número que aparece en el badge amarillo
-    content: 'daaaah, no era tan dificil'
+    key: 'Justin Bieber',
+    number: '23',
+    content: 'Chonywuuuaaay',
+    image: ''
   },
 {
-    key: 'Meyo Meyo',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '24',        // número que aparece en el badge amarillo
+    key: 'Meyo Meyo',
+    number: '24',
     content: 'Mi amor, para que valga este apartado deberas de mandarme un audio diciendo "meyo meyo" con el tonito. Te amo'
   }, 
 {
-    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '25',        // número que aparece en el badge amarillo
+    key: 'Ventana',
+    number: '25',
+    content: 'No dejes las ventanas abiertas del depa babys'
+  },
+{
+    key: 'Gerard',
+    number: '26',
+    content: 'Desbloqueaste el nombre de nuestro futuro hijo, no hay cambios si es que yo lo decido'
+  }, 
+{
+    key: 'Liru Sisa',
+    number: '27',
+    content: 'Te debo unos crazy bread'
+  },
+{
+    key: 'Esperanza',
+    number: '28',
+    content: 'Me debes un heladito babyyyys, pero yo invito el tuyo ahhh'
+  }, 
+{
+    key: 'Dios',
+    number: '29',
+    content: '"Porque yo sé muy bien los planes que tengo para ustedes, planes de bienestar y no de calamidad, para darles un futuro y una esperanza." — Jeremías 29:11'
+  },
+{
+    key: 'Chongos',
+    number: '30',
+    content: 'Desbloqueaste una lata de chongos zamoranos'
+  }, 
+{
+    key: 'Besos',
+    number: '31',
     content: 'daaaah, no era tan dificil'
   },
 {
-    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '26',        // número que aparece en el badge amarillo
+    key: 'hihishihsihish',
+    number: '32',
     content: 'daaaah, no era tan dificil'
   }, 
 {
-    key: 'Liru Sisa',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '27',        // número que aparece en el badge amarillo
-    content: 'sssssssss'
+    key: '123456789',
+    number: '33',
+    content: 'daaaah, no era tan dificil'
   },
 {
-    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '28',        // número que aparece en el badge amarillo
+    key: 'hihishihsihish',
+    number: '34',
     content: 'daaaah, no era tan dificil'
   }, 
 {
-    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '29',        // número que aparece en el badge amarillo
+    key: '123456789',
+    number: '35',
     content: 'daaaah, no era tan dificil'
   },
 {
-    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '30',        // número que aparece en el badge amarillo
+    key: 'hihishihsihish',
+    number: '36',
     content: 'daaaah, no era tan dificil'
   }, 
 {
-    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '31',        // número que aparece en el badge amarillo
+    key: '123456789',
+    number: '37',
     content: 'daaaah, no era tan dificil'
   },
 {
-    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '32',        // número que aparece en el badge amarillo
+    key: 'hihishihsihish',
+    number: '38',
     content: 'daaaah, no era tan dificil'
   }, 
 {
-    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '33',        // número que aparece en el badge amarillo
+    key: '123456789',
+    number: '39',
     content: 'daaaah, no era tan dificil'
   },
 {
-    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '34',        // número que aparece en el badge amarillo
-    content: 'daaaah, no era tan dificil'
-  }, 
-{
-    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '35',        // número que aparece en el badge amarillo
-    content: 'daaaah, no era tan dificil'
-  },
-{
-    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '36',        // número que aparece en el badge amarillo
-    content: 'daaaah, no era tan dificil'
-  }, 
-{
-    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '37',        // número que aparece en el badge amarillo
-    content: 'daaaah, no era tan dificil'
-  },
-{
-    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '38',        // número que aparece en el badge amarillo
-    content: 'daaaah, no era tan dificil'
-  }, 
-{
-    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '39',        // número que aparece en el badge amarillo
-    content: 'daaaah, no era tan dificil'
-  },
-{
-    key: 'Cien',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '40',        // número que aparece en el badge amarillo
+    key: 'Cien',
+    number: '40',
     content: 'Amo cada cosa de ti Lizeth, no sabes cuanto amor siento por ti, cuando te cuestionas y me dices "siento que no me amas" se me viene a mi mente "ilusa" ahh. Es que no puedo explicar el gran amor que te tengo, yo realmente no me veo con una vida sin que tu estes a mi lado, sin que tu me digas que me amas, que me abraces y que me beses. No me lo puedo imaginar, y se que si existiera una vida en el que no estemos juntos. No quisiera vivirla'
   }, 
 {
-    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '41',        // número que aparece en el badge amarillo
-    content: 'daaaah, no era tan dificil'
+    key: 'Toromax',
+    number: '41',
+    content: 'No te enojes babys, te amo. No te pareces en nada mi amor, eres hermosa ahh, pero si'
   },
 {
-    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '42',        // número que aparece en el badge amarillo
+    key: 'Ansioso',
+    number: '42',
+    content: 'Me pones bien ansioso babys, gracias a este apartado ocupo que me des una tarde, me des'
+  }, 
+{
+    key: 'Redskins',
+    number: '43',
+    content: 'Digo'
+  },
+{
+    key: 'hihishihsihish',
+    number: '44',
     content: 'daaaah, no era tan dificil'
   }, 
 {
-    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '43',        // número que aparece en el badge amarillo
+    key: '123456789',
+    number: '45',
     content: 'daaaah, no era tan dificil'
   },
 {
-    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '44',        // número que aparece en el badge amarillo
+    key: 'hihishihsihish',
+    number: '46',
     content: 'daaaah, no era tan dificil'
   }, 
 {
-    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '45',        // número que aparece en el badge amarillo
+    key: '123456789',
+    number: '47',
     content: 'daaaah, no era tan dificil'
   },
 {
-    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '46',        // número que aparece en el badge amarillo
-    content: 'daaaah, no era tan dificil'
-  }, 
-{
-    key: '123456789',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '47',        // número que aparece en el badge amarillo
+    key: 'hihishihsihish',
+    number: '48',
     content: 'daaaah, no era tan dificil'
   },
 {
-    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '48',        // número que aparece en el badge amarillo
+    key: 'hihishihsihish',
+    number: '49',
     content: 'daaaah, no era tan dificil'
   },
 {
-    key: 'hihishihsihish',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '49',        // número que aparece en el badge amarillo
-    content: 'daaaah, no era tan dificil'
-  },
-{
-    key: 'hlsmlmslm',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '50',        // número que aparece en el badge amarillo
+    key: 'hlsmlmslm',
+    number: '50',
     content: 'daaaah, no era tan dificil'
   },   
 {
-    key: '1 de julio',   // ✏️ CONTRASEÑA que ella debe escribir
-    number: '¿?¿?¿?',        // número que aparece en el badge amarillo
+    key: '1 de julio',
+    number: '¿?¿?¿?',
     content: 'Bueno mi amor, a lo mejor te sorprendiste por lo sencillo que es la contraseña, pero sabes, este apartado tiene algo muy peculiar. Como pudiste haberlo descubierto desde el principio, como a mediados o ya al final de que concluyera la pagina. Pues con este apartado, te ganaste el txt (bloc de notas) de la pagina, es como tener la pagina web pero en fisico, osea impresa, solo que, no solo fue descubrir el apartado, este regalo se validaria, si es que descubriste TODOS LOS SECRETOS DE ELLA, es como "Platinar" un videojuego de la play jajaja. Has respetar el cupon cuando ya lo hayas descubierto.'
   }, 
     
